@@ -15,12 +15,20 @@ A full-stack authentication system built with modern web technologies.
 
 ```
 mysql-nest-react/
-├── apps/           # Frontend applications
-│   └── frontend/   # React app
-├── services/       # Backend services  
-│   └── backend/    # NestJS API
-├── packages/       # Shared packages
-└── docs/          # Documentation
+├── apps/              # Frontend applications
+│   ├── frontend/      # Main React app (Step 4)
+│   └── README.md      # Apps documentation
+├── services/          # Backend services  
+│   ├── backend/       # Main NestJS API (Step 5)
+│   └── README.md      # Services documentation
+├── packages/          # Shared packages
+│   ├── shared/        # Common utilities & types (future)
+│   ├── ui/            # Shared UI components (future)
+│   └── README.md      # Packages documentation
+├── .husky/            # Git hooks (Husky)
+├── .vscode/           # VSCode settings
+├── .taskmaster/       # Task management
+└── docs/              # Project documentation
 ```
 
 ## 🛠️ Development
