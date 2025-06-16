@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 커밋 메시지 검증 (Conventional Commits 강제)
+npx --no -- commitlint --edit "$1"

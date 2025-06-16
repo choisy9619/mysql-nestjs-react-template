@@ -1,0 +1,59 @@
+{
+  "name": "mysql-nest-react-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack authentication system with MySQL, NestJS, and React",
+  "author": "seoyoungsz",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently \"pnpm dev:backend\" \"pnpm dev:frontend\"",
+    "dev:backend": "pnpm --filter services/backend dev",
+    "dev:frontend": "pnpm --filter apps/frontend dev",
+    "build": "pnpm -r build",
+    "build:backend": "pnpm --filter services/backend build",
+    "build:frontend": "pnpm --filter apps/frontend build",
+    "test": "pnpm -r test",
+    "lint": "biome lint --config-path=biome.jsonc .",
+    "lint:fix": "biome lint --config-path=biome.jsonc --apply .",
+    "format": "biome format --config-path=biome.jsonc --write .",
+    "format:check": "biome format --config-path=biome.jsonc .",
+    "check": "biome check --config-path=biome.jsonc .",
+    "check:fix": "biome check --config-path=biome.jsonc --apply .",
+    "install:all": "pnpm install",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
+    "commit-msg": "commitlint --edit"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.4.0",
+    "@commitlint/cli": "^18.0.0",
+    "@commitlint/config-conventional": "^18.0.0",
+    "@types/node": "^20.0.0",
+    "concurrently": "^8.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": [
+    "monorepo",
+    "mysql",
+    "nestjs",
+    "react",
+    "typescript",
+    "authentication"
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,jsonc}": [
+      "biome check --config-path=biome.jsonc --apply --no-errors-on-unmatched",
+      "git add"
+    ]
+  }
+}

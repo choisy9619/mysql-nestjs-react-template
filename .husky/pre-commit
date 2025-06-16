@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 커밋 전에 staged files에 대해서만 Biome 검사 실행
+pnpm pre-commit
