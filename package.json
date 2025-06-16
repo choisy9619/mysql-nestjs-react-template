@@ -42,18 +42,10 @@
     "type": "git",
     "url": "."
   },
-  "keywords": [
-    "monorepo",
-    "mysql",
-    "nestjs",
-    "react",
-    "typescript",
-    "authentication"
-  ],
+  "keywords": ["monorepo", "mysql", "nestjs", "react", "typescript", "authentication"],
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,jsonc}": [
-      "biome check --config-path=biome.jsonc --apply --no-errors-on-unmatched",
-      "git add"
+      "biome check --config-path=biome.jsonc --apply --no-errors-on-unmatched"
     ]
   }
 }
