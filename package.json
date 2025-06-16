@@ -14,11 +14,11 @@
     "build:frontend": "pnpm --filter apps/frontend build",
     "test": "pnpm -r test",
     "lint": "biome lint --config-path=biome.jsonc .",
-    "lint:fix": "biome lint --config-path=biome.jsonc --apply .",
+    "lint:fix": "biome lint --config-path=biome.jsonc --write .",
     "format": "biome format --config-path=biome.jsonc --write .",
     "format:check": "biome format --config-path=biome.jsonc .",
     "check": "biome check --config-path=biome.jsonc .",
-    "check:fix": "biome check --config-path=biome.jsonc --apply .",
+    "check:fix": "biome check --config-path=biome.jsonc --write .",
     "install:all": "pnpm install",
     "prepare": "husky install",
     "pre-commit": "lint-staged",
@@ -45,7 +45,7 @@
   "keywords": ["monorepo", "mysql", "nestjs", "react", "typescript", "authentication"],
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,jsonc}": [
-      "biome check --config-path=biome.jsonc --apply --no-errors-on-unmatched"
+      "biome check --config-path=biome.jsonc --write --no-errors-on-unmatched"
     ]
   }
 }

@@ -1,90 +1,93 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.4.1/schema.json",
-  
+
   // Import 구문 자동 정리 (사용하지 않는 import 제거, 순서 정렬)
   "organizeImports": {
     "enabled": true
   },
-  
+
   // 린팅 (코드 품질 검사) 설정
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true, // Biome 추천 규칙 모두 활성화
       "style": {
-        "noNonNullAssertion": "off",  // TypeScript의 ! 연산자 허용
-        "useImportType": "error"      // type-only import 강제 (import type { ... })
+        "noNonNullAssertion": "off", // TypeScript의 ! 연산자 허용
+        "useImportType": "error" // type-only import 강제 (import type { ... })
       },
       "suspicious": {
-        "noExplicitAny": "warn"       // any 타입 사용 시 경고 (에러 아님)
+        "noExplicitAny": "warn" // any 타입 사용 시 경고 (에러 아님)
       },
       "complexity": {
-        "noBannedTypes": "warn"       // 금지된 타입 사용 시 경고
+        "noBannedTypes": "warn" // 금지된 타입 사용 시 경고
       }
     }
   },
-  
+
   // 코드 포맷팅 설정
   "formatter": {
     "enabled": true,
-    "formatWithErrors": false,    // 에러가 있는 파일은 포맷팅 안 함
-    "indentStyle": "space",       // 탭 대신 스페이스 사용
-    "indentWidth": 2,             // 들여쓰기 2칸
-    "lineWidth": 100,             // 한 줄 최대 100자
-    "lineEnding": "lf",           // Unix 스타일 줄바꿈 (\n)
-    "ignore": [                   // 포맷팅 제외할 폴더/파일
-      "**/node_modules/**", 
-      "**/dist/**", 
-      "**/build/**", 
+    "formatWithErrors": false, // 에러가 있는 파일은 포맷팅 안 함
+    "indentStyle": "space", // 탭 대신 스페이스 사용
+    "indentWidth": 2, // 들여쓰기 2칸
+    "lineWidth": 100, // 한 줄 최대 100자
+    "lineEnding": "lf", // Unix 스타일 줄바꿈 (\n)
+    "ignore": [
+      // 포맷팅 제외할 폴더/파일
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
       "**/.git/**"
     ]
   },
-  
+
   // JavaScript/TypeScript 전용 포맷팅 설정
   "javascript": {
     "formatter": {
-      "quoteStyle": "single",       // 문자열은 싱글 쿼트 사용 ('hello')
-      "jsxQuoteStyle": "double",    // JSX 속성은 더블 쿼트 사용 (<div className="...">)
-      "trailingComma": "es5",       // ES5 호환 trailing comma (객체, 배열 마지막 요소 뒤)
-      "semicolons": "always"        // 세미콜론 항상 추가
+      "quoteStyle": "single", // 문자열은 싱글 쿼트 사용 ('hello')
+      "jsxQuoteStyle": "double", // JSX 속성은 더블 쿼트 사용 (<div className="...">)
+      "trailingCommas": "es5", // ES5 호환 trailing comma (객체, 배열 마지막 요소 뒤)
+      "semicolons": "always" // 세미콜론 항상 추가
     }
   },
-  
+
   // JSON 파일 설정
   "json": {
     "parser": {
-      "allowComments": true         // JSON 파일에서 주석 허용 (package.json 등)
+      "allowComments": true // JSON 파일에서 주석 허용 (package.json 등)
     },
     "formatter": {
-      "enabled": true               // JSON 파일도 포맷팅 적용
+      "enabled": true // JSON 파일도 포맷팅 적용
     }
   },
-  
+
   // 검사할 파일 패턴 설정
   "files": {
-    "include": [                    // 포함할 파일 확장자
+    "include": [
+      // 포함할 파일 확장자
       "**/*.js",
-      "**/*.jsx", 
+      "**/*.jsx",
       "**/*.ts",
       "**/*.tsx",
       "**/*.json",
-      "**/*.jsonc"                  // 주석이 있는 JSON 파일
+      "**/*.jsonc" // 주석이 있는 JSON 파일
     ],
-    "ignore": [                     // 제외할 폴더/파일
-      "**/node_modules/**",         // 의존성 패키지
-      "**/dist/**",                 // 빌드 결과물
-      "**/build/**",                // 빌드 결과물
-      "**/.git/**",                 // Git 폴더
-      "**/coverage/**",             // 테스트 커버리지 결과
-      "**/.next/**",                // Next.js 캐시
-      "**/.taskmaster/**"           // Task Master 설정 폴더
+    "ignore": [
+      // 제외할 폴더/파일
+      "**/node_modules/**", // 의존성 패키지
+      "**/dist/**", // 빌드 결과물
+      "**/build/**", // 빌드 결과물
+      "**/.git/**", // Git 폴더
+      "**/coverage/**", // 테스트 커버리지 결과
+      "**/.next/**", // Next.js 캐시
+      "**/.taskmaster/**" // Task Master 설정 폴더
     ]
   },
-  
+
   // Git 연동 설정
   "vcs": {
-    "enabled": true,                // Git과 연동 활성화
-    "clientKind": "git",            // Git 사용
-    "useIgnoreFile": true           // .gitignore 파일 존중
+    "enabled": true, // Git과 연동 활성화
+    "clientKind": "git", // Git 사용
+    "useIgnoreFile": true // .gitignore 파일 존중
   }
 }
