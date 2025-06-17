@@ -30,4 +30,10 @@ tasks/
 
 # TypeScript build info
 *.tsbuildinfo
-tsconfig.tsbuildinfo 
+tsconfig.tsbuildinfo
+
+# Build outputs
+dist/
+build/
+
+.turbo

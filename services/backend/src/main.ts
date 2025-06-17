@@ -16,12 +16,12 @@ async function bootstrap() {
 
   // CORS configuration
   app.enableCors({
-    origin: ['http://localhost:3000'], // Frontend URL
+    origin: ['http://localhost:5173'], // Frontend URL (Vite 기본 포트)
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
-  const port = process.env.PORT || 3001;
+  const port = process.env.PORT || 4000;
   await app.listen(port);
 
   console.log(`🚀 Backend server running on: http://localhost:${port}`);

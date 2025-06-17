@@ -13,7 +13,7 @@
       "recommended": true, // Biome 추천 규칙 모두 활성화
       "style": {
         "noNonNullAssertion": "off", // TypeScript의 ! 연산자 허용
-        "useImportType": "error" // type-only import 강제 (import type { ... })
+        "useImportType": "off" // type-only import 강제 비활성화 (NestJS 의존성 주입 호환)
       },
       "suspicious": {
         "noExplicitAny": "warn" // any 타입 사용 시 경고 (에러 아님)
