@@ -43,6 +43,9 @@
 
   // JavaScript/TypeScript 전용 포맷팅 설정
   "javascript": {
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true // 데코레이터 문법 지원 활성화
+    },
     "formatter": {
       "quoteStyle": "single", // 문자열은 싱글 쿼트 사용 ('hello')
       "jsxQuoteStyle": "double", // JSX 속성은 더블 쿼트 사용 (<div className="...">)

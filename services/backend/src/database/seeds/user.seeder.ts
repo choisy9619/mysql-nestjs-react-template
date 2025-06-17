@@ -1,6 +1,6 @@
+import { User } from '@/auth/entities/user.entity';
 import * as bcrypt from 'bcryptjs';
 import { DataSource } from 'typeorm';
-import { User } from '../../auth/entities/user.entity';
 
 export class UserSeeder {
   constructor(private dataSource: DataSource) {}

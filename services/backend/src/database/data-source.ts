@@ -1,6 +1,6 @@
+import { User } from '@/auth/entities/user.entity';
 import { loadConfig } from '@mysql-nest-react/shared';
 import { DataSource } from 'typeorm';
-import { User } from '../auth/entities/user.entity';
 
 const config = loadConfig();
 
