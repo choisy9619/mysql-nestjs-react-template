@@ -1,3 +1,4 @@
+import { ApiResponse } from '@/common';
 import {
   Body,
   Controller,
@@ -8,7 +9,6 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiTags, ApiResponse as SwaggerResponse } from '@nestjs/swagger';
-import { ApiResponse } from '../common/dto/api-response.dto';
 import { AuthService } from './auth.service';
 import { UserResponseDto } from './dto/register-response.dto';
 import { RegisterDto } from './dto/register.dto';
