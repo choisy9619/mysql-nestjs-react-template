@@ -1,0 +1,94 @@
+# Docker Volume 특별 요구사항 예시들
+version: '3.8'
+
+volumes:
+  # 🔥 1. 성능 최적화 - SSD 경로 지정
+  high_performance_db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/nvme-ssd/mysql-data  # 고성능 SSD 디스크 사용
+
+  # 🌐 2. NFS 네트워크 스토리지 (클러스터 환경)
+  shared_data:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.1.100,rw,noatime,rsize=8192,wsize=8192
+      device: ":/mnt/shared/mysql"
+
+  # 🧠 3. 메모리 기반 임시 데이터 (Redis 같은 캐시)
+  memory_cache:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+      o: size=1g,uid=999,gid=999  # 1GB 메모리, MySQL 사용자 권한
+
+  # 🔒 4. 암호화된 볼륨 (민감한 데이터)
+  encrypted_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind,encryption=aes256
+      device: /encrypted/mysql-data
+
+  # 📊 5. 백업 전용 볼륨 (읽기 전용)
+  backup_storage:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind,ro  # 읽기 전용
+      device: /backup/mysql
+
+  # ☁️ 6. AWS EFS (클라우드 파일시스템)
+  aws_efs:
+    driver: local
+    driver_opts:
+      type: nfs4
+      o: addr=fs-12345.efs.us-west-2.amazonaws.com,rsize=1048576,wsize=1048576
+      device: :/
+
+  # 🚀 7. 고가용성 Ceph 스토리지
+  ceph_storage:
+    driver: local
+    driver_opts:
+      type: ceph
+      o: name=admin,secret=AQD...==
+      device: 192.168.1.10:6789,192.168.1.11:6789:/mysql
+
+  # 📈 8. 모니터링이 가능한 볼륨
+  monitored_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /data/mysql
+    labels:
+      - "monitoring=enabled"
+      - "backup=daily"
+      - "tier=production"
+
+# 실제 사용 예시
+services:
+  # 고성능이 필요한 프로덕션 DB
+  production_mysql:
+    image: mysql:8.0
+    volumes:
+      - high_performance_db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+  # 개발용 메모리 캐시
+  dev_redis:
+    image: redis:alpine
+    volumes:
+      - memory_cache:/data
+
+  # 백업 전용 컨테이너
+  backup_service:
+    image: mysql:8.0
+    volumes:
+      - backup_storage:/backup:ro  # 읽기 전용으로 마운트
+    command: mysqldump --all-databases
