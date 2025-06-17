@@ -9,8 +9,16 @@ dev-debug.log
 # Dependency directories
 node_modules/
 
-# Environment variables
+# Environment variables (legacy)
 .env
+.env.local
+.env.production
+
+# Configuration files with secrets (keep template.json)
+config/development.json
+config/production.json
+config/staging.json
+config/local.json
 
 # Editor directories and files
 .idea

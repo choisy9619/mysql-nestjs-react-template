@@ -1,0 +1,29 @@
+{
+  "app": {
+    "name": "MySQL NestJS React App",
+    "version": "1.0.0",
+    "port": 4000,
+    "nodeEnv": "development"
+  },
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "username": "YOUR_DB_USERNAME",
+    "password": "YOUR_DB_PASSWORD",
+    "name": "mysql_nest_react",
+    "synchronize": true,
+    "logging": true
+  },
+  "jwt": {
+    "secret": "YOUR_JWT_SECRET_CHANGE_THIS_IN_PRODUCTION",
+    "expiresIn": "24h"
+  },
+  "cors": {
+    "origin": "http://localhost:3000",
+    "credentials": true
+  },
+  "frontend": {
+    "apiBaseUrl": "http://localhost:4000",
+    "appTitle": "MySQL NestJS React App"
+  }
+}

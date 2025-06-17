@@ -13,22 +13,36 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": true, // 루트 프로젝트는 빌드하지 않음 (참조만)
     "jsx": "react-jsx",
-    "baseUrl": ".",
+    "baseUrl": ".", // 상대 경로의 기준점
+
+    // 📍 PATH MAPPING (모듈 경로 별칭)
+    // import 문에서 사용할 수 있는 경로 단축키 정의
+    // 예: import Button from '@/components/Button'
+    //     import { config } from '@shared/config'
     "paths": {
-      "@/*": ["./src/*"],
-      "@shared/*": ["./packages/shared/*"]
+      "@/*": ["./src/*"], // @/ → ./src/ 매핑
+      "@shared/*": ["./packages/shared/*"] // @shared/ → ./packages/shared/ 매핑
     }
   },
+
+  // 🔗 PROJECT REFERENCES (TypeScript 프로젝트 의존성)
+  // 빌드 순서와 프로젝트 간 타입 참조 관계 정의
+  // tsc --build 시 의존성 순서대로 빌드됨
   "references": [
     {
-      "path": "./apps/frontend"
+      "path": "./packages/shared" // 1번: shared 패키지 먼저 빌드
     },
     {
-      "path": "./services/backend"
+      "path": "./apps/frontend" // 2번: frontend (shared에 의존할 수 있음)
+    },
+    {
+      "path": "./services/backend" // 3번: backend (shared에 의존할 수 있음)
     }
   ],
+
+  // 루트 프로젝트 자체는 빌드할 파일이 없음 (참조 관리만)
   "files": [],
   "include": [],
   "exclude": ["node_modules", "**/dist", "**/build", "coverage"]

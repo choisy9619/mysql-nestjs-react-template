@@ -7,7 +7,7 @@
   "author": "seoyoungsz",
   "license": "MIT",
   "scripts": {
-    "dev": "turbo dev",
+    "dev": "turbo dev --filter @apps/frontend --filter @services/backend",
     "build": "turbo build",
     "test": "turbo test",
     "lint": "biome lint --config-path=biome.jsonc .",

@@ -39,6 +39,39 @@ mysql-nest-react/
 - [Node.js](https://nodejs.org/) (18.x or higher)
 - [pnpm](https://pnpm.io/installation)
 
+### ⚙️ Configuration Setup
+
+This project uses centralized JSON configuration files instead of scattered `.env` files.
+
+#### First-time Setup
+
+```bash
+# Copy template configuration
+cp config/template.json config/dev.json
+
+# Edit development configuration
+# Update database credentials, JWT secrets, etc.
+vim config/dev.json
+```
+
+#### Configuration Files
+
+- `config/template.json` - Template with placeholder values
+- `config/dev.json` - Development environment settings
+- `config/prod.json` - Production environment settings (**never commit real secrets**)
+
+#### Environment Variables Override
+
+You can still override sensitive values with environment variables:
+
+```bash
+# Override database password
+export DB_PASSWORD="your-secure-password"
+
+# Override JWT secret
+export JWT_SECRET="your-jwt-secret"
+```
+
 ### Installation
 
 ```bash
