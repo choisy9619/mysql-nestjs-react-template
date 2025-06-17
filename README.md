@@ -33,6 +33,12 @@ mysql-nest-react/
 
 ## 🛠️ Development
 
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
+- [Node.js](https://nodejs.org/) (18.x or higher)
+- [pnpm](https://pnpm.io/installation)
+
 ### Installation
 
 ```bash
@@ -41,6 +47,75 @@ pnpm install
 
 # Setup Git hooks (automatic after install)
 pnpm prepare
+```
+
+### 🐳 Database Setup (MySQL with Docker)
+
+#### Start MySQL Container
+
+```bash
+# Start MySQL container in background
+docker-compose up -d
+
+# Check container status
+docker-compose ps
+
+# View container logs
+docker-compose logs mysql
+```
+
+#### Connect to Database
+
+```bash
+# Connect via Docker (recommended for development)
+docker-compose exec mysql mysql -u nestuser -p mysql_nest_react
+# Password: nestpassword
+
+# Connect from host (requires MySQL client)
+mysql -h localhost -P 3306 -u nestuser -p mysql_nest_react
+# Password: nestpassword
+
+# Connect as root user
+docker-compose exec mysql mysql -u root -p
+# Password: rootpassword
+```
+
+#### Database Management
+
+```bash
+# Stop MySQL container
+docker-compose down
+
+# Stop and remove all data (⚠️ DANGER: All data will be lost!)
+docker-compose down -v
+
+# View database files location
+docker volume inspect mysql-nest-react_mysql_data
+
+# Backup database
+docker-compose exec mysql mysqldump -u root -p mysql_nest_react > backup.sql
+
+# Restore database
+docker-compose exec -T mysql mysql -u root -p mysql_nest_react < backup.sql
+```
+
+#### Troubleshooting Database
+
+```bash
+# Container won't start
+docker-compose logs mysql
+
+# Port already in use (3306)
+lsof -i :3306
+# Kill process or change port in docker-compose.yml
+
+# Reset everything
+docker-compose down -v
+docker system prune -f
+docker-compose up -d
+
+# Check disk space
+docker system df
 ```
 
 ### Available Scripts
@@ -165,8 +240,9 @@ export HUSKY=0
 ## 🏗️ Next Steps
 
 1. ✅ Setup monorepo structure
-2. ⏳ Create folder structure
-3. ⏳ Initialize frontend app
-4. ⏳ Initialize backend app
-5. ⏳ Configure TypeScript
-6. ⏳ Setup database
+2. ✅ Create folder structure  
+3. ✅ Setup Docker MySQL database
+4. ⏳ Initialize NestJS backend app
+5. ⏳ Initialize React frontend app
+6. ⏳ Configure TypeScript integration
+7. ⏳ Implement user authentication
